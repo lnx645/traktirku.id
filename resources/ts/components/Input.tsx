@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ComponentPropsWithoutRef } from 'react';
 
-// 1. Styling dasar menggunakan variabel CSS yang kita bahas tadi
 const BaseInput = styled.input`
     padding: 7px 10px;
     border: 2px solid #ccc;
@@ -35,13 +34,14 @@ export default function Input({ type = 'text', ...props }: InputProps) {
             {props.label && (
                 <label
                     css={css`
+                        color:#000000A8;
                         font-weight: 600;
                     `}
                 >
                     {props.label}
                 </label>
             )}
-            <BaseInput type={type} {...props} />
+            <BaseInput  type={type} {...props} />
         </div>
     );
 }

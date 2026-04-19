@@ -1,175 +1,105 @@
 /** @jsxImportSource @emotion/react */
-
 import Styled from '@emotion/styled';
-const ButtonBase = Styled.button`
- appearance: button;
- background-color: #1899D6;
- border: solid transparent;
- border-radius: 16px;
- border-width: 0 0 4px;
- box-sizing: border-box;
- color: #FFFFFF;
- cursor: pointer;
- display: inline-block;
- font-family: din-round,sans-serif;
- font-size: 12px;
- font-weight: 700;
- letter-spacing: .8px;
- line-height: 20px;
- margin: 0;
- outline: none;
- overflow: visible;
- padding: 9px 16px;
- text-align: center;
- text-transform: uppercase;
- touch-action: manipulation;
- transform: translateZ(0);
- transition: filter .2s;
- user-select: none;
- -webkit-user-select: none;
- vertical-align: middle;
- white-space: nowrap;
- width: 100%;
- &:after{
-   background-clip: padding-box;
-    background-color: #1CB0F6;
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    bottom: -4px;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
- }
-&:focus{
-user-select: auto;
+import { ReactNode } from 'react';
+
+const variants = {
+  default: { bg: 'rgb(248, 248, 248)', border: 'rgb(156, 156, 156)' },
+  success: { bg: '#58cc02', border: '#46a302' },
+  danger: { bg: '#ff4b4b', border: '#d33131' },
+  warning: { bg: '#ffc800', border: '#e5a400' },
+  info: { bg: '#1cb0f6', border: '#1899d6' },
+};
+
+type VariantType = keyof typeof variants;
+
+interface ButtonBaseProps {
+  variant?: VariantType;
+  block?:boolean,
+  disabled?: boolean; // Tambahkan props disabled di sini
 }
-&:hover:not(:disabled) {
- filter: brightness(1.1);
- -webkit-filter: brightness(1.1);
-}
- &:active{
-  border-width: 4px 0 0;
- background: none;}
+
+const ButtonBase = Styled.button<ButtonBaseProps>(function ({
+  variant = 'default',
+  disabled,
+  block = false,
+}) {
+  const color = variants[variant] ?? variants.default;
+
+  return `
+    -webkit-tap-highlight-color:transparent;
+    width: ${block ? '100%' : "auto"};
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid ${disabled ? '#d3d3d3' : color.border};
+    font-family: "Istok Web", sans-serif;
+    letter-spacing: 1px;
+    padding: 0 12px;
+    text-align: center;
+    height: 40px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: normal;
+    border-radius: 1rem;
+    outline: none;
+    user-select: none;
+    cursor: ${disabled ? 'not-allowed' : 'pointer'};
+    transform: translateY(0px);
+    position: relative;
+    background: ${disabled ? '#e5e5e5' : color.bg};
+    color: ${disabled ? '#afafaf' : variant == 'default' ? 'rgb(82, 82, 82)' : 'white'};
+    transition: 150ms all ease-in-out;
+
+    /* Logic Box Shadow saat disabled vs normal */
+    box-shadow: ${disabled
+      ? `0 3px 0 #d3d3d3` // Shadow flat saat disabled
+      : `inset 0 30px 30px -15px rgba(255, 255, 255, 0.1),
+         inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+         inset 0 1px 20px rgba(0, 0, 0, 0),
+         0 3px 0 ${color.border},
+         0 3px 2px rgba(0, 0, 0, 0.2),
+         0 5px 10px rgba(0, 0, 0, 0.1),
+         0 10px 20px rgba(0, 0, 0, 0.1)`
+    };
+
+    &:active {
+      ${!disabled && `
+        transform: translateY(3px);
+        box-shadow:
+          inset 0 16px 2px -15px rgba(0, 0, 0, 0),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+          inset 0 1px 20px rgba(0, 0, 0, 0.1),
+          0 0 0 ${color.border},
+          0 0 0 2px rgba(255, 255, 255, 0.5),
+          0 0 0 rgba(0, 0, 0, 0),
+          0 0 0 rgba(0, 0, 0, 0);
+      `}
+    }
+
+    svg {
+      width: 24px;
+      margin-right: 8px;
+      filter: ${disabled ? 'grayscale(1)' : 'none'};
+    }
 `;
-export default function Button(params: any) {
-    return <ButtonBase>{params.children}</ButtonBase>;
+});
+
+export default function Button({
+  children,
+  variant = 'default',
+  disabled = false,
+  ...props
+}: {
+  variant?: VariantType;
+  children: ReactNode;
+  block?:boolean,
+  disabled?: boolean;
+  [key: string]: any;
+}) {
+  return (
+    <ButtonBase variant={variant} disabled={disabled} {...props}>
+      {children}
+    </ButtonBase>
+  );
 }
-
-
-
-// <!-- HTML !-->
-// <button class="button-82-pushable" role="button">
-//   <span class="button-82-shadow"></span>
-//   <span class="button-82-edge"></span>
-//   <span class="button-82-front text">
-//     Button 82
-//   </span>
-// </button>
-
-/* CSS */
-// .button-82-pushable {
-//   position: relative;
-//   border: none;
-//   background: transparent;
-//   padding: 0;
-//   cursor: pointer;
-//   outline-offset: 4px;
-//   transition: filter 250ms;
-//   user-select: none;
-//   -webkit-user-select: none;
-//   touch-action: manipulation;
-// }
-
-// .button-82-shadow {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 12px;
-//   background: hsl(0deg 0% 0% / 0.25);
-//   will-change: transform;
-//   transform: translateY(2px);
-//   transition:
-//     transform
-//     600ms
-//     cubic-bezier(.3, .7, .4, 1);
-// }
-
-// .button-82-edge {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 12px;
-//   background: linear-gradient(
-//     to left,
-//     hsl(340deg 100% 16%) 0%,
-//     hsl(340deg 100% 32%) 8%,
-//     hsl(340deg 100% 32%) 92%,
-//     hsl(340deg 100% 16%) 100%
-//   );
-// }
-
-// .button-82-front {
-//   display: block;
-//   position: relative;
-//   padding: 12px 27px;
-//   border-radius: 12px;
-//   font-size: 1.1rem;
-//   color: white;
-//   background: hsl(345deg 100% 47%);
-//   will-change: transform;
-//   transform: translateY(-4px);
-//   transition:
-//     transform
-//     600ms
-//     cubic-bezier(.3, .7, .4, 1);
-// }
-
-// @media (min-width: 768px) {
-//   .button-82-front {
-//     font-size: 1.25rem;
-//     padding: 12px 42px;
-//   }
-// }
-
-// .button-82-pushable:hover {
-//   filter: brightness(110%);
-//   -webkit-filter: brightness(110%);
-// }
-
-// .button-82-pushable:hover .button-82-front {
-//   transform: translateY(-6px);
-//   transition:
-//     transform
-//     250ms
-//     cubic-bezier(.3, .7, .4, 1.5);
-// }
-
-// .button-82-pushable:active .button-82-front {
-//   transform: translateY(-2px);
-//   transition: transform 34ms;
-// }
-
-// .button-82-pushable:hover .button-82-shadow {
-//   transform: translateY(4px);
-//   transition:
-//     transform
-//     250ms
-//     cubic-bezier(.3, .7, .4, 1.5);
-// }
-
-// .button-82-pushable:active .button-82-shadow {
-//   transform: translateY(1px);
-//   transition: transform 34ms;
-// }
-
-// .button-82-pushable:focus:not(:focus-visible) {
-//   outline: none;
-// }
