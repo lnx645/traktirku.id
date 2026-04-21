@@ -9,7 +9,7 @@ type Props = {
 const LinkWrapper = styled(Link)({
     display: 'flex',
     alignItems: 'center',
-    padding: '5px 7px',
+    padding: '7px 10px',
     borderRadius: 8,
     border: '1px solid transparent',
     gap: 10,
