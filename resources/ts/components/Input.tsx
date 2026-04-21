@@ -5,13 +5,16 @@ import { ComponentPropsWithoutRef, useId } from 'react';
 
 const BaseInput = styled.input`
     label: input;
-    background-color: #f9f9f9;
-    border: 1px solid rgb(188, 188, 188);
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 7px;
     outline: none;
-    padding: 9px 12px;
+    caret-color:#fe2c55;
+    color:#000;
+    height:36px;
+    padding-left:10px;
     &:focus {
-        border-color: rgb(110, 110, 110);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     }
 `;
 

@@ -13,7 +13,7 @@ export default function Login() {
         <div
             css={css(
                 mq({
-                    maxWidth: [320, 350],
+                    maxWidth: [320, 330],
                     margin: 'auto',
                     marginTop: 90,
                     display: 'flex',
@@ -40,17 +40,38 @@ export default function Login() {
                     gap: 10,
                 })}
             >
-                <Link css={css({ fontSize: 13,fontWeight:600,textDecoration:"none",color:"#991a26" })} href="/forgot-password">
+                <Link
+                    css={css({
+                        fontSize: 13,
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        color: '#991a26',
+                    })}
+                    href="/forgot-password"
+                >
                     Lupa Password?
                 </Link>
-                <Button block variant="success" disabled={false}>
+                <Button block variant="danger" disabled={false}>
                     Login Sekarang
                 </Button>
             </div>
-            <div css={css({ display: 'flex', justifyContent: 'center', marginTop: 10 })}>
+            <div
+                css={css({
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: 10,
+                })}
+            >
                 <span css={css({ fontSize: 13, color: 'rgb(82, 82, 82)' })}>
                     Belum punya akun?{' '}
-                    <Link css={css({ fontWeight: 600, textDecoration: 'none', color: '#991a26' })} href="/register">
+                    <Link
+                        css={css({
+                            fontWeight: 600,
+                            textDecoration: 'none',
+                            color: '#991a26',
+                        })}
+                        href="/register"
+                    >
                         Daftar disini
                     </Link>
                 </span>

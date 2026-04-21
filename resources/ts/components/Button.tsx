@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 const variants = {
     default: { bg: 'rgb(248, 248, 248)', border: 'rgb(156, 156, 156)' },
     success: { bg: '#58cc02', border: '#46a302' },
-    danger: { bg: '#ff4b4b', border: '#d33131' },
+    danger: { bg: '#fe2c55', border: '#d24545' },
     warning: { bg: '#ffc800', border: '#e5a400' },
     info: { bg: '#1cb0f6', border: '#1899d6' },
 };
