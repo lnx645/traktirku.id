@@ -3,25 +3,28 @@ import { ReactNode } from 'react';
 import BaseLayout from './BaseLayout';
 import { css } from '@emotion/react';
 import { BaseNavbar } from '@/components/BaseNavbar';
-
+const wrapper = css({
+    maxWidth: '100%',
+});
+const WrapperContent = css({
+    display: 'flex',
+});
+const sidebar = css({
+    width: 250,
+});
+const sidbearConent = css({
+    padding: '32px 19px 48px 20px',
+    minHeight: 'calc(100vh - var(--h-navbar))',
+    maxHeight: 'calc(100vh - var(--h-navbar))',
+    background: '#fff',
+    borderRight: '1px solid #0000003D',
+});
 export default function ManageLayout({ children }: { children: ReactNode }) {
     return (
         <BaseLayout>
-            <div
-                css={css({
-                    maxWidth: '100%',
-                })}
-            >
-                <div
-                    css={css({
-                        display: 'flex',
-                    })}
-                >
-                    <aside
-                        css={css({
-                            width: 250,
-                        })}
-                    >
+            <div css={wrapper}>
+                <div css={WrapperContent}>
+                    <aside css={sidebar}>
                         <BaseNavbar>
                             <img
                                 width={100}
@@ -29,19 +32,11 @@ export default function ManageLayout({ children }: { children: ReactNode }) {
                                 alt=""
                             />
                         </BaseNavbar>
-                        <div
-                            css={css({
-                                padding: '32px 19px 48px 20px',
-                                minHeight: 'calc(100vh - var(--h-navbar))',
-                                maxHeight: 'calc(100vh - var(--h-navbar))',
-                                background: '#fff',
-                                borderRight: '1px solid #0000003D',
-                            })}
-                        ></div>
+                        <div css={sidbearConent}></div>
                     </aside>
                     <main css={css({ flex: 1 })}>
                         <BaseNavbar>s</BaseNavbar>
-                        <div>{children}</div>
+                        <div css={css({padding:10})}>{children}</div>
                     </main>
                 </div>
             </div>

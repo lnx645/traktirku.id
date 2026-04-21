@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     label: header;
     background: white;
     width:100%;
-    border:1px solid #0000003D;
+    border-bottom:1px solid #0000003D;
     height: var(--h-navbar);
 `;
 const NavbarWrapperMain = styled.div(
