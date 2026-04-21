@@ -3,14 +3,14 @@ import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import mq from '@/lib/breakpoints';
-const Wrapper = styled.div`
+export const BaseNavbarWrapper = styled.div`
     label: header;
     background: white;
     width:100%;
     border-bottom:1px solid rgba(0, 0, 0, 0.08);
     height: var(--h-navbar);
 `;
-const NavbarWrapperMain = styled.div(
+export const BaseNavbarWrapperMain = styled.div(
     mq({
         display: 'flex',
         alignItems: 'center',
@@ -20,8 +20,8 @@ const NavbarWrapperMain = styled.div(
 
 export const BaseNavbar = ({ children }: { children: ReactNode }) => {
     return (
-        <Wrapper>
-            <NavbarWrapperMain>{children}</NavbarWrapperMain>
-        </Wrapper>
+        <BaseNavbarWrapper>
+            <BaseNavbarWrapperMain>{children}</BaseNavbarWrapperMain>
+        </BaseNavbarWrapper>
     );
 };
