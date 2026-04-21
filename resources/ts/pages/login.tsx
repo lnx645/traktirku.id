@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 import SwitchV1 from '@/components/SwitchV1';
 import mq from '@/lib/breakpoints';
+import { Link } from '@inertiajs/react';
 
 export default function Login() {
     const [checked, setChecked] = useState(false);
@@ -12,9 +13,9 @@ export default function Login() {
         <div
             css={css(
                 mq({
-                    maxWidth: [320, 280],
+                    maxWidth: [320, 350],
                     margin: 'auto',
-                    marginTop: 25,
+                    marginTop: 90,
                     display: 'flex',
                     flexDirection: 'column',
                     gap: [14, 17],
@@ -30,26 +31,29 @@ export default function Login() {
             </div>
             <Input placeholder="Alamat Email" label="Email" type="text" />
             <Input placeholder="Kata Sandi" label="Password" type="password" />
-            <div>
-                <div
-                    css={css`
-                        display: flex;
-                        align-items: center;
-                        gap: 4px;
-                        margin-bottom: 10px;
-                    `}
-                >
-                    <SwitchV1
-                        label="Simpan Session Login"
-                        checked={checked}
-                        onChange={() => {
-                            setChecked(!checked);
-                        }}
-                    />
-                </div>
-                <Button block variant="danger" disabled={false}>
+            <div
+                css={css({
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'end',
+                    gap: 10,
+                })}
+            >
+                <Link css={css({ fontSize: 13,fontWeight:600,textDecoration:"none",color:"#991a26" })} href="/forgot-password">
+                    Lupa Password?
+                </Link>
+                <Button block variant="success" disabled={false}>
                     Login Sekarang
                 </Button>
+            </div>
+            <div css={css({ display: 'flex', justifyContent: 'center', marginTop: 10 })}>
+                <span css={css({ fontSize: 13, color: 'rgb(82, 82, 82)' })}>
+                    Belum punya akun?{' '}
+                    <Link css={css({ fontWeight: 600, textDecoration: 'none', color: '#991a26' })} href="/register">
+                        Daftar disini
+                    </Link>
+                </span>
             </div>
         </div>
     );

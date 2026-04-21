@@ -6,7 +6,7 @@ import mq from '@/lib/breakpoints';
 const Wrapper = styled.div`
     label: header;
     background: white;
-    box-shadow: 0px 0px 8px #dedede;
+    border:1px solid #0000003D;
     height: var(--h-navbar);
 `;
 const NavbarWrapperMain = styled.div(

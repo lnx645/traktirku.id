@@ -1,18 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, useId } from 'react';
 
 const BaseInput = styled.input`
-    padding: 7px 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 13px;
-    color: #555;
+    label: input;
+    background-color: #f9f9f9;
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 7px;
     outline: none;
+    padding: 9px 12px;
     &:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        border-color: rgb(110, 110, 110);
     }
 `;
 
@@ -21,27 +20,29 @@ interface InputProps extends ComponentPropsWithoutRef<'input'> {
 }
 
 export default function Input({ type = 'text', ...props }: InputProps) {
+    const id = useId();
     return (
         <div
-            style={{
+            css={css({
                 display: 'flex',
                 fontSize: 13,
                 fontWeight: 500,
                 flexDirection: 'column',
                 gap: '1px',
-            }}
+            })}
         >
             {props.label && (
                 <label
                     css={css`
-                        color:#000000A8;
+                        color: #000000a8;
                         font-weight: 600;
                     `}
+                    htmlFor={id}
                 >
                     {props.label}
                 </label>
             )}
-            <BaseInput  type={type} {...props} />
+            <BaseInput type={type} {...props} id={id} />
         </div>
     );
 }

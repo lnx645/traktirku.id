@@ -3,31 +3,31 @@ import Styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
 const variants = {
-  default: { bg: 'rgb(248, 248, 248)', border: 'rgb(156, 156, 156)' },
-  success: { bg: '#58cc02', border: '#46a302' },
-  danger: { bg: '#ff4b4b', border: '#d33131' },
-  warning: { bg: '#ffc800', border: '#e5a400' },
-  info: { bg: '#1cb0f6', border: '#1899d6' },
+    default: { bg: 'rgb(248, 248, 248)', border: 'rgb(156, 156, 156)' },
+    success: { bg: '#58cc02', border: '#46a302' },
+    danger: { bg: '#ff4b4b', border: '#d33131' },
+    warning: { bg: '#ffc800', border: '#e5a400' },
+    info: { bg: '#1cb0f6', border: '#1899d6' },
 };
 
 type VariantType = keyof typeof variants;
 
 interface ButtonBaseProps {
-  variant?: VariantType;
-  block?:boolean,
-  disabled?: boolean; // Tambahkan props disabled di sini
+    variant?: VariantType;
+    block?: boolean;
+    disabled?: boolean; // Tambahkan props disabled di sini
 }
 
 const ButtonBase = Styled.button<ButtonBaseProps>(function ({
-  variant = 'default',
-  disabled,
-  block = false,
+    variant = 'default',
+    disabled,
+    block = false,
 }) {
-  const color = variants[variant] ?? variants.default;
+    const color = variants[variant] ?? variants.default;
 
-  return `
+    return `
     -webkit-tap-highlight-color:transparent;
-    width: ${block ? '100%' : "auto"};
+    width: ${block ? '100%' : 'auto'};
     overflow: hidden;
     display: inline-flex;
     align-items: center;
@@ -52,9 +52,10 @@ const ButtonBase = Styled.button<ButtonBaseProps>(function ({
     transition: 150ms all ease-in-out;
 
     /* Logic Box Shadow saat disabled vs normal */
-    box-shadow: ${disabled
-      ? `0 3px 0 #d3d3d3` // Shadow flat saat disabled
-      : `inset 0 30px 30px -15px rgba(255, 255, 255, 0.1),
+    box-shadow: ${
+        disabled
+            ? `0 3px 0 #d3d3d3` // Shadow flat saat disabled
+            : `inset 0 30px 30px -15px rgba(255, 255, 255, 0.1),
          inset 0 0 0 1px rgba(255, 255, 255, 0.3),
          inset 0 1px 20px rgba(0, 0, 0, 0),
          0 3px 0 ${color.border},
@@ -64,7 +65,9 @@ const ButtonBase = Styled.button<ButtonBaseProps>(function ({
     };
 
     &:active {
-      ${!disabled && `
+      ${
+          !disabled &&
+          `
         transform: translateY(3px);
         box-shadow:
           inset 0 16px 2px -15px rgba(0, 0, 0, 0),
@@ -74,7 +77,8 @@ const ButtonBase = Styled.button<ButtonBaseProps>(function ({
           0 0 0 2px rgba(255, 255, 255, 0.5),
           0 0 0 rgba(0, 0, 0, 0),
           0 0 0 rgba(0, 0, 0, 0);
-      `}
+      `
+      }
     }
 
     svg {
@@ -86,20 +90,20 @@ const ButtonBase = Styled.button<ButtonBaseProps>(function ({
 });
 
 export default function Button({
-  children,
-  variant = 'default',
-  disabled = false,
-  ...props
+    children,
+    variant = 'default',
+    disabled = false,
+    ...props
 }: {
-  variant?: VariantType;
-  children: ReactNode;
-  block?:boolean,
-  disabled?: boolean;
-  [key: string]: any;
+    variant?: VariantType;
+    children: ReactNode;
+    block?: boolean;
+    disabled?: boolean;
+    [key: string]: any;
 }) {
-  return (
-    <ButtonBase variant={variant} disabled={disabled} {...props}>
-      {children}
-    </ButtonBase>
-  );
+    return (
+        <ButtonBase variant={variant} disabled={disabled} {...props}>
+            {children}
+        </ButtonBase>
+    );
 }

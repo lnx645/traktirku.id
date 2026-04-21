@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #ffffff;
+    --bg-color: #ebebeb;
     --text-color: #4b4b4b;
     --primary-color: #58cc02;
     --secondary-color: #1cb0f6;
@@ -7,16 +7,9 @@
     --button-shadow: #46a302;
 }
 
-:root{
-    --h-navbar:52px;
+:root {
+    --h-navbar: 52px;
 }
 
-[data-theme='dark'] {
-    --bg-color: #131f24;
-    --text-color: #f1f1f1;
-    --primary-color: #78d633;
-    --secondary-color: #1cb0f6;
-    --border-color: #3b4a54;
-    --button-shadow: #589b01;
-}
+
 

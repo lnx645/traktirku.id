@@ -16,6 +16,8 @@ const reset = css`
     }
 
     body {
+        background: var(--bg-color);
+        color:var(--text-color);
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         font-family: 'Quicksand Variable', sans-serif;
