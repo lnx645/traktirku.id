@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     label: header;
     background: white;
     width:100%;
-    border-bottom:1px solid #0000003D;
+    border-bottom:1px solid rgba(0, 0, 0, 0.08);
     height: var(--h-navbar);
 `;
 const NavbarWrapperMain = styled.div(
@@ -15,7 +15,6 @@ const NavbarWrapperMain = styled.div(
         display: 'flex',
         alignItems: 'center',
         height: 'var(--h-navbar)',
-        paddingInline: [10, 42],
     }),
 );
 
